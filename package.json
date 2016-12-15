@@ -1,0 +1,22 @@
+{
+  "name": "mongodb-factory",
+  "version": "1.0.0",
+  "description": "Test factory for mongoDB injections.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baoskee/mongodb-factory.git"
+  },
+  "author": "Bao <baoskee@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baoskee/mongodb-factory/issues"
+  },
+  "homepage": "https://github.com/baoskee/mongodb-factory#readme",
+  "dependencies": {
+    "mongodb": "^2.2.16"
+  }
+}
