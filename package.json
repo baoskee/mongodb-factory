@@ -1,6 +1,6 @@
 {
   "name": "mongodb-factory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test factory for mongoDB injections.",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,8 @@
   "homepage": "https://github.com/baoskee/mongodb-factory#readme",
   "dependencies": {
     "mongodb": "^2.2.16"
-  }, "devDependencies": {
+  },
+  "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
   }
