@@ -26,5 +26,4 @@ describe('Stub', function () {
     user.password.should.equal('potato');
     done();
   });
-
 });

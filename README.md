@@ -4,17 +4,23 @@ Test factory for mongoDB injections.
 
 
 ## Getting Started
+Getting the Factory constructor object. 
+
 ```javascript
-var MONGO_URI = 'mongodb://localhost/test'
-var factory = require('mongodb-factory')(MONGO_URI)
+var MONGO_URI = 'mongodb://localhost/test';
+var Factory = require('mongodb-factory');
 ```
 
 ### Creating stubs
 The argument is a function for possible creation of dynamically 
 generated stubs.
 ```javascript
-var Stub = require('mongodb-factory').Stub;
-var faker = require('faker')
+var Stub = Factory.Stub;
+/**
+ * faker is a library for generating fake data 
+ * https://www.npmjs.com/package/faker 
+ */
+var faker = require('faker'); 
 var userStub = new Stub(function () {
     username: faker.internet.username(),
     password: faker.internet.password()
@@ -23,8 +29,6 @@ var userStub = new Stub(function () {
 
 ### Executing plans
 ```javascript
-var MONGO_URI = 'mongodb://localhost/test'
-var Factory = require('mongodb-factory');
 var factory = new Factory(MONGO_URI);
 
 factory.add(300, userStub)
@@ -44,13 +48,16 @@ Will delete all documents from your database.
 
 ```javascript
 factory.cleanUp(function (err) {
-    if (err) {
-     /* handle error */ 
-    }
+  if (err) {
+    /* handle error */ 
+  }
 });
 ```
 
 ### Internals
+#### Limitations
+Right now argument passing and cleanUp function is bad. I'll fix in within the next few days.
+
 #### Inside Orders
 Orders are internal representations for factory plans to have chained 
 methods like add(). The Order class should not be too heavy, only
