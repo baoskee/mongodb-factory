@@ -4,7 +4,7 @@
   "description": "Test factory for mongoDB injections.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/baoskee/mongodb-factory#readme",
   "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "mongodb": "^2.2.16"
   }
 }
