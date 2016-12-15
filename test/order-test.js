@@ -36,4 +36,14 @@ describe('Order', function () {
     });
     done(); 
   });
+
+  it('toArray() should pass arguments to its stub definition', function (done) {
+    var order = new Order(200, _userStub, { username: 'ratatouille', password: 'potato'});
+    var data = order.toArray();
+    data.forEach(function (user) {
+      user.username.should.equal('ratatouille');
+      user.password.should.equal('potato');
+    });
+    done();
+  });
 });

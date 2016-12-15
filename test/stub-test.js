@@ -1,5 +1,5 @@
 var should = require('chai').should();
-var Stub = require('../lib/stub');
+var Stub = require('../index').Stub;
 
 describe('Stub', function () {
   var _userStub;

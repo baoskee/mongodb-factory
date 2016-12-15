@@ -13,6 +13,7 @@ var factory = require('mongodb-factory')(MONGO_URI)
 The argument is a function for possible creation of dynamically 
 generated stubs.
 ```javascript
+var Stub = require('mongodb-factory').Stub;
 var faker = require('faker')
 var userStub = new Stub(function () {
     username: faker.internet.username(),
@@ -21,14 +22,13 @@ var userStub = new Stub(function () {
 ```
 
 ### Executing plans
-
 ```javascript
 var MONGO_URI = 'mongodb://localhost/test'
-var factory = require('mongodb-factory')(MONGO_URI)
+var Factory = require('mongodb-factory');
+var factory = new Factory(MONGO_URI);
 
-var plan = new factory.Plan();
-plan.add(300, 'users')
-    .add(200, 'animals')
+factory.add(300, userStub)
+    .add(200, animalStub)
     .exec(function (err) {
         if (err) { /* handle error */ }
     });
@@ -43,18 +43,11 @@ add clause.
 Will delete all documents from your database.
 
 ```javascript
-factory.cleanup(function (err) {
-    if (err) { /* handle error */ }
+factory.cleanUp(function (err) {
+    if (err) {
+     /* handle error */ 
+    }
 });
-```
-
-### For use with Express and Mocha
-```javascript
-
-```
-
-```javascript
-
 ```
 
 ### Internals
