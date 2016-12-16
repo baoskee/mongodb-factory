@@ -1,6 +1,7 @@
 var should = require('chai').should();
-var Stub = require('../lib/stub');
-var Order = require('../lib/order');
+var Factory = require('../index');
+var Stub = Factory.Stub;
+var Order = Factory.Order;
 
 describe('Order', function () {
   var _order;
