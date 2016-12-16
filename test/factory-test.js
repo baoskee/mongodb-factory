@@ -83,6 +83,13 @@ describe('Factory', function () {
       });
     });
 
+    it('getDB() should return database object', function (done) {
+      factory.getDB(function (err, db) {
+        if (err) throw err;
+        should.exist(db);
+        done();
+      });
+    });
   });
 
 });
