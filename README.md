@@ -23,7 +23,7 @@ var faker = require('faker');
 var userStub = new Stub(function () {
     username: faker.internet.username(),
     password: faker.internet.password()
-}); 
+}, 'users'); 
 ```
 
 ### Executing plans
@@ -67,7 +67,7 @@ var animalStub = new Stub(function (type, name) {
      type: type || 'mammal',
      name: name || 'Oski'
    }
-});
+}, 'animals');
 
 factory.add(100, animalStub, 'reptile').exec(...);
 ```
