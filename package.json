@@ -1,6 +1,6 @@
 {
   "name": "mongodb-factory",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Test factory for mongoDB injections.",
   "main": "index.js",
   "scripts": {
