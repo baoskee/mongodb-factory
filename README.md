@@ -13,6 +13,7 @@ var Factory = require('mongodb-factory');
 ### Creating stubs
 The argument is a function for possible creation of dynamically 
 generated stubs.
+
 ```javascript
 var Stub = Factory.Stub;
 /**
@@ -40,10 +41,17 @@ factory.add(300, userStub)
     });
 ```
 
-#### Adding optional arguments to add() function
-If you add optional arguments to the add function, the plan extends
-your stub to take in those arguments for all the stubs in that 
-add clause.
+### Getting the database object
+For application actions that require insertions to MongoDB, having 
+a database getter can be handy for quick lookups to check they
+were actually inserted.
+
+```javascript
+factory.getDB(function (err, db) {
+    if (err) throw err;
+    // do something with the db object
+});
+```
 
 ### Cleaning up
 Will delete all documents from your database.
@@ -56,11 +64,11 @@ factory.cleanUp(function (err) {
 });
 ```
 
+## Advanced 
 
-### Advanced 
-
-#### Dynamic stubs
+### Dynamic stubs
 Arguments defined in stub can be passed into the add() method of factory.
+
 ```javascript
 var animalStub = new Stub(function (type, name) {
    return {
@@ -71,3 +79,11 @@ var animalStub = new Stub(function (type, name) {
 
 factory.add(100, animalStub, 'reptile').exec(...);
 ```
+
+### Adding collections to remove all documents from
+```javascript
+factory.collections.push('otherCollection');
+// now it will delete all documents from 'otherCollection' also
+factory.cleanUp(function (err) {...}); 
+```
+
