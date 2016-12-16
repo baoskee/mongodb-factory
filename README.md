@@ -7,7 +7,6 @@ Test factory for mongoDB injections.
 Getting the Factory constructor object. 
 
 ```javascript
-var MONGO_URI = 'mongodb://localhost/test';
 var Factory = require('mongodb-factory');
 ```
 
@@ -29,12 +28,15 @@ var userStub = new Stub(function () {
 
 ### Executing plans
 ```javascript
+var MONGO_URI = 'mongodb://localhost/test';
 var factory = new Factory(MONGO_URI);
 
 factory.add(300, userStub)
     .add(200, animalStub)
-    .exec(function (err) {
-        if (err) { /* handle error */ }
+    .exec(function (err, docs) { // docs an array of all inserted documents
+        if (err) { 
+          // handle error  
+        }
     });
 ```
 
@@ -54,11 +56,18 @@ factory.cleanUp(function (err) {
 });
 ```
 
-### Internals
-#### Limitations
-Right now argument passing and cleanUp function is bad. I'll fix in within the next few days.
 
-#### Inside Orders
-Orders are internal representations for factory plans to have chained 
-methods like add(). The Order class should not be too heavy, only
-serves as plural form for the generation of previously defined stubs.
+### Advanced 
+
+#### Dynamic stubs
+Arguments defined in stub can be passed into the add() method of factory.
+```javascript
+var animalStub = new Stub(function (type, name) {
+   return {
+     type: type || 'mammal',
+     name: name || 'Oski'
+   }
+});
+
+factory.add(100, animalStub, 'reptile').exec(...);
+```
