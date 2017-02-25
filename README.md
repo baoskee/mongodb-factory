@@ -58,16 +58,17 @@ Will delete all documents from your database.
 
 ```javascript
 factory.cleanUp(function (err) {
-  if (err) {
+  if (err)
     /* handle error */ 
-  }
+  else 
+    /* do some maintenance */
 });
 ```
 
 ## Advanced 
 
 ### Dynamic stubs
-Arguments defined in stub can be passed into the add() method of factory.
+Arguments defined in stub will be passed into the add() method of factory.
 
 ```javascript
 var animalStub = new Stub(function (type, name) {
@@ -77,13 +78,15 @@ var animalStub = new Stub(function (type, name) {
    }
 }, 'animals');
 
-factory.add(100, animalStub, 'reptile').exec(...);
+factory.add(1, animalStub, 'reptile', 'Bob')
+    .add(1, animalStub, 'bear')
+    .exec(...);
 ```
 
 ### Adding collections to remove all documents from
 ```javascript
 factory.collections.push('otherCollection');
 // now it will delete all documents from 'otherCollection' also
-factory.cleanUp(function (err) {...}); 
+factory.cleanup(function (err) {...}); 
 ```
 
