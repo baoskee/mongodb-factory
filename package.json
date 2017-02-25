@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/baoskee/mongodb-factory#readme",
   "dependencies": {
+    "async": "^2.1.5",
     "mongodb": "^2.2.16"
   },
   "devDependencies": {
